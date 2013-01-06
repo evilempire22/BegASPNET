@@ -131,3 +131,8 @@ h1
   font-style: italic;
 }
 
+img
+{
+  border: 0;
+}
+

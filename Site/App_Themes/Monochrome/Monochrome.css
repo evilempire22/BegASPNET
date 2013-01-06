@@ -218,3 +218,8 @@ a.level1:hover a.level2:hover
 {
   background-color: #BCD1FE;
 }
+
+img
+{
+  border: 0;
+}
