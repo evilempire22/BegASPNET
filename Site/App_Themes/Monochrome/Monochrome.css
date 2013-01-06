@@ -189,3 +189,32 @@ h2
 {
   color: White;
 }
+
+ul.level1
+{
+  font-size: 14px;
+  font-weight: bold;
+  height: 19px;
+  line-height: 19px;
+}
+
+ul.level1.selected
+{
+  background-color: #BCD1FE;
+}
+
+a.level1
+{
+  margin-left: 5px;
+}
+
+a.level2
+{
+  background-color: #cccccc;
+  padding-left: 8px;
+}
+
+a.level1:hover a.level2:hover
+{
+  background-color: #BCD1FE;
+}
