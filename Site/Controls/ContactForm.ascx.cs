@@ -49,6 +49,7 @@ public partial class Controls_ContactForm : System.Web.UI.UserControl
 
         Message.Visible = true;
         FormTable.Visible = false;
+        System.Threading.Thread.Sleep(5000);
       }
     }
 }
