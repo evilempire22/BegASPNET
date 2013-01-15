@@ -1,4 +1,10 @@
 ﻿<%@ Control Language="C#" AutoEventWireup="true" CodeFile="ContactForm.ascx.cs" Inherits="Controls_ContactForm" %>
+
+<% if (false)
+   { %>
+    <script src="../Scripts/jquery-1.4.1-vsdoc.js" type="text/javascript"></script>
+<% } %>
+
 <style type="text/css">
   .style1
   {
@@ -24,6 +30,7 @@
 
 <asp:UpdatePanel ID="UpdatePanel1" runat="server">
   <ContentTemplate>
+  <div id="TableWrapper">
     <table class="style1" runat="server" id="FormTable">
       <tr>
         <td colspan="3">
@@ -33,7 +40,7 @@
         <td>
           Name</td>
         <td>
-          <asp:TextBox ID="Name" runat="server"></asp:TextBox>
+          <asp:TextBox ID="Name" runat="server" ToolTip="Enter your name" CssClass="InputBox"></asp:TextBox>
         </td>
         <td>
           <asp:RequiredFieldValidator ID="RequiredFieldValidator1" runat="server" 
@@ -44,7 +51,8 @@
         <td>
           E-mail address</td>
         <td>
-          <asp:TextBox ID="EmailAddress" runat="server"></asp:TextBox>
+          <asp:TextBox ID="EmailAddress" runat="server" CssClass="InputBox" 
+            ToolTip="Enter your email address"></asp:TextBox>
         </td>
         <td>
           <asp:RequiredFieldValidator ID="RequiredFieldValidator2" runat="server" 
@@ -60,7 +68,8 @@
         <td>
           E-mail address again</td>
         <td>
-          <asp:TextBox ID="ConfirmEmailAddress" runat="server"></asp:TextBox>
+          <asp:TextBox ID="ConfirmEmailAddress" runat="server" CssClass="InputBox" 
+            ToolTip="Enter your email address again"></asp:TextBox>
         </td>
         <td>
           <asp:RequiredFieldValidator ID="RequiredFieldValidator3" runat="server" 
@@ -75,7 +84,8 @@
         <td>
           Home phone number</td>
         <td>
-          <asp:TextBox ID="PhoneHome" runat="server"></asp:TextBox>
+          <asp:TextBox ID="PhoneHome" runat="server" CssClass="InputBox" Height="22px" 
+            ToolTip="Enter your home phone number"></asp:TextBox>
         </td>
         <td>
           <asp:CustomValidator ID="CustomValidator1" runat="server" 
@@ -88,7 +98,8 @@
         <td>
           Business phone number</td>
         <td>
-          <asp:TextBox ID="PhoneBusiness" runat="server"></asp:TextBox>
+          <asp:TextBox ID="PhoneBusiness" runat="server" CssClass="InputBox" 
+            ToolTip="Enter your business phone number"></asp:TextBox>
         </td>
         <td>
           &nbsp;</td>
@@ -98,7 +109,7 @@
           Comments</td>
         <td>
           <asp:TextBox ID="Comments" runat="server" Height="115px" TextMode="MultiLine" 
-            Width="369px"></asp:TextBox>
+            CssClass="InputBox" ToolTip="Enter your comments"></asp:TextBox>
         </td>
         <td>
           <asp:RequiredFieldValidator ID="RequiredFieldValidator4" runat="server" 
@@ -125,7 +136,9 @@
         </td>
       </tr>
     </table>
+    </div>
     <asp:Label ID="Message" runat="server" Text="Message Sent" Visible="False" />
+    <p runat="server" id="MessageSentPara" visible="false">Thank you for your message. We will get in touch with you if necessary.</p>
   </ContentTemplate>
 </asp:UpdatePanel>
 <asp:UpdateProgress ID="UpdateProgress1" runat="server" AssociatedUpdatePanelID="UpdatePanel1">
@@ -135,3 +148,21 @@
     </div>
   </ProgressTemplate>
 </asp:UpdateProgress>
+<script src="../Scripts/jquery.updnWatermark.js" type="text/javascript"></script>
+<script type="text/javascript">
+  $(function ()
+  {
+    $.updnWatermark.attachAll({ cssClass: 'Watermark' });
+    $('form').bind('submit', function ()
+    {
+      if (Page_IsValid)
+      {
+        $('#TableWrapper').slideUp(3000);
+      }
+    });
+  });
+  function pageLoad()
+  {
+    $('.Attention').animate({ width: '600px' }, 3000).animate({ width: '100px' }, 3000).fadeOut('slow');
+  }
+</script>
