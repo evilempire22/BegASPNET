@@ -12,7 +12,7 @@
     DataKeyNames="Id" DataSourceID="SqlDataSource2">
     <Columns>
       <asp:HyperLinkField DataNavigateUrlFields="Id" 
-        DataNavigateUrlFormatString="AddEditReview.aspx?Id={0}" DataTextField="Title" 
+        DataNavigateUrlFormatString="AddEditReviewHandCoded.aspx?Id={0}" DataTextField="Title" 
         HeaderText="Title" />
       <asp:TemplateField HeaderText="Authorized" SortExpression="Authorized">
         <ItemTemplate>
@@ -24,7 +24,7 @@
       <asp:CommandField HeaderText="Delete" ShowDeleteButton="True" />
     </Columns>
   </asp:GridView>
-  <a href="AddEditReview.aspx">Insert New Reviews</a><asp:SqlDataSource ID="SqlDataSource2" runat="server" 
+  <a href="AddEditReviewHandCoded.aspx">Insert New Reviews</a><asp:SqlDataSource ID="SqlDataSource2" runat="server" 
     ConnectionString="<%$ ConnectionStrings:PlanetWroxConnectionString1 %>" 
     DeleteCommand="DELETE FROM [Review] WHERE [Id] = @Id" 
     InsertCommand="INSERT INTO [Review] ([Title], [Authorized], [CreateDateTime]) VALUES (@Title, @Authorized, @CreateDateTime)" 

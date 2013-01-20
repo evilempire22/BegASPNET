@@ -160,3 +160,8 @@ img
   display: block;
   text-align: center;
 }
+
+.ItemContainer
+{
+  width: 400px;
+}
