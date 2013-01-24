@@ -5,8 +5,7 @@
 <asp:Content ID="Content2" ContentPlaceHolderID="cpMainContent" Runat="Server">
   <asp:ListView ID="ListView1" runat="server" DataKeyNames="Id" 
     DataSourceID="EntityDataSource1" InsertItemPosition="LastItem" 
-    oniteminserting="ListView1_ItemInserting" 
-    onitemcreated="ListView1_ItemCreated">
+    oniteminserting="ListView1_ItemInserting">
     <InsertItemTemplate>
       <li style="">Description:
         <asp:RequiredFieldValidator ID="reqDesc" ControlToValidate="DescriptionTextBox" runat="server" ErrorMessage="Enter a description." />

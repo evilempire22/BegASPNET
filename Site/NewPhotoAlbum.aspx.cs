@@ -17,4 +17,9 @@ public partial class _NewPhotoAlbum : BasePage
       PhotoAlbum myPhotoAlbum = (PhotoAlbum)e.Entity;
       Response.Redirect(string.Format("ManagePhotoAlbum.aspx?PhotoAlbumId={0}", myPhotoAlbum.Id.ToString()));
     }
+    protected void EntityDataSource1_Inserting(object sender, EntityDataSourceChangingEventArgs e)
+    {
+      PhotoAlbum myPhotoAlbum = (PhotoAlbum)e.Entity;
+      myPhotoAlbum.UserName = User.Identity.Name;
+    }
 }

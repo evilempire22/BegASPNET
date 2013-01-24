@@ -11,7 +11,19 @@ public partial class _ManagePhotoAlbum : BasePage
 {
     protected void Page_Load(object sender, EventArgs e)
     {
+      int photoAlbumId = Convert.ToInt32(Request.QueryString.Get("PhotoAlbumId"));
 
+      using(PlanetWroxEntities myEntities = new PlanetWroxEntities())
+      {
+        string photoAlbumOwner = (from p in myEntities.PhotoAlbums
+                                  where p.Id == photoAlbumId
+                                  select p.UserName).Single();
+
+        if(User.Identity.Name != photoAlbumOwner && !User.IsInRole("Managers"))
+        {
+          Response.Redirect("~/");
+        }
+      }
     }
     protected void EntityDataSource1_Inserting(object sender, EntityDataSourceChangingEventArgs e)
     {
@@ -36,16 +48,6 @@ public partial class _ManagePhotoAlbum : BasePage
         CustomValidator cusValImage = (CustomValidator)ListView1.InsertItem.FindControl("cusValImage");
         cusValImage.IsValid = false;
         e.Cancel = true;
-      }
-    }
-    protected void ListView1_ItemCreated(object sender, ListViewItemEventArgs e)
-    {
-      switch (e.Item.ItemType)
-      {
-        case ListViewItemType.DataItem:
-          Button deleteButton = (Button)e.Item.FindControl("DeleteButton");
-          deleteButton.Visible = Roles.IsUserInRole("Managers");
-          break;
       }
     }
 }
